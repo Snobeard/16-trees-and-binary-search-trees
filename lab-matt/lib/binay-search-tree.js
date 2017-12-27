@@ -14,9 +14,6 @@ class BinarySearchTree {
     if (this.value === value) {
       throw new Error('Binary Search Tree - value is already present');
     }
-    if (!value) {
-      throw new Error('Binary Search Tree - value needs to be present');
-    }
 
     if (this.value > value) {
       if (this.left) {

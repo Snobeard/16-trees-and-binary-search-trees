@@ -43,28 +43,25 @@ describe('K-Ary-Tree', () => {
     });
   });
 
-
-
-
-  // describe('.find(value)', () => {
-  //   test('finds the first given value in the tree using breadth first traversal', () => {
-  //     expect(tree.find(1)).toEqual(tree);
-  //     expect(tree.find(2)).toEqual(two);
-  //     expect(tree.find(3)).toEqual(three);
-  //     expect(tree.find(4)).toEqual(four);
-  //     expect(tree.find(5)).toEqual(five);
-  //     expect(tree.find(6)).toEqual(six);
-  //   });
+  describe('.find(value)', () => {
+    test('finds the first given value in the tree and return the node', () => {
+      expect(bsTree.find(10)).toEqual(true);
+      expect(bsTree.find(5)).toEqual(true);
+      expect(bsTree.find(8)).toEqual(true);
+      expect(bsTree.find(12)).toEqual(true);
+      expect(bsTree.find(1)).toEqual(true);
+      expect(bsTree.find(19)).toEqual(true);
+    });
     
-  //   test('if the value is not found it will return with "Value: \'<value>\' Not Found', () => {
-  //     expect(tree.find(0)).toEqual('Value: \'0\' Not Found');
-  //     expect(tree.find(10)).toEqual('Value: \'10\' Not Found');
-  //     expect(tree.find(20)).toEqual('Value: \'20\' Not Found');
-  //     expect(tree.find(100)).toEqual('Value: \'100\' Not Found');
-  //     expect(tree.find(200)).toEqual('Value: \'200\' Not Found');
-  //     expect(tree.find(300)).toEqual('Value: \'300\' Not Found');
-  //   });
-  // });
+    test('if the value is not found it will return with "Value: \'<value>\' Not Found', () => {
+      expect(bsTree.find(0)).toEqual(false);
+      expect(bsTree.find(10)).toEqual(true);
+      expect(bsTree.find(20)).toEqual(false);
+      expect(bsTree.find(100)).toEqual(false);
+      expect(bsTree.find(200)).toEqual(false);
+      expect(bsTree.find(300)).toEqual(false);
+    });
+  });
 
   // describe('.toString()', () => {
   //   test('should combine all child nodes into a string using a breath-first and concatenate their values separated by a newline', () => {
