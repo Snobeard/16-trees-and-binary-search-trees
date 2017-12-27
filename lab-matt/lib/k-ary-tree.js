@@ -15,20 +15,6 @@ class KaryTree {
     this._children.push(tree);
   }
 
-  breadthFirstSearch() {
-    let queue = new Queue();
-    queue.enqueue(this);
-
-    while (queue.getLength() > 0) {
-      let current = queue.dequeue();
-      console.log(`Visiting ${current.value}`);
-
-      for (let child of current._children) {
-        queue.enqueue(child);
-      }
-    }
-  }
-
   find(value) {
     let queue = new Queue();
     queue.enqueue(this);
@@ -46,6 +32,40 @@ class KaryTree {
     }
     return `Value: '${value}' Not Found`;
   }
+
+  toString() {
+    let queue = new Queue();
+    queue.enqueue(this);
+    let string = '';
+
+    while (queue.getLength() > 0) {
+      let current = queue.dequeue();
+
+      string += `${current.value}\n`;
+
+      for (let child of current._children) {
+        queue.enqueue(child);
+      }
+    }
+    return string.trim();
+  }
+
+  toArray() {
+    let stack = [this];
+    let resultArray = [];
+
+    while (stack.length > 0) {
+      let current = stack.pop();
+      
+      for (let child of current._children) {
+        stack.push(child);
+      }
+      
+      resultArray.push(current.value);
+    }
+    return resultArray;
+  }
 }
 
 module.exports = KaryTree;
+
