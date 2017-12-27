@@ -14,10 +14,13 @@ class BinarySearchTree {
     if (this.value === value) {
       throw new Error('Binary Search Tree - value is already present');
     }
+    if (!value) {
+      throw new Error('Binary Search Tree - value needs to be present');
+    }
 
     if (this.value > value) {
       if (this.left) {
-        this.left.insertValue(value);
+        this.left.insert(value);
         return;
       } else {
         this.left = new BinarySearchTree(value);
@@ -26,7 +29,7 @@ class BinarySearchTree {
     }
 
     if (this.right) {
-      this.right.insertValue(value);
+      this.right.insert(value);
       return;
     } else {
       this.right = new BinarySearchTree(value);
@@ -60,13 +63,4 @@ class BinarySearchTree {
 
 }
 
-
 module.exports = BinarySearchTree;
-
-// let bst = new BinarySearchTree(10);
-
-// bst.insert(5);
-// bst.insert(8);
-// bst.insert(12);
-// bst.insert(1);
-// bst.insert(19);
