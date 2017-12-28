@@ -83,7 +83,7 @@ class BinarySearchTree {
       }
 
     } else {
-      return 'No Node Found';
+      return null;
     }
   }
 

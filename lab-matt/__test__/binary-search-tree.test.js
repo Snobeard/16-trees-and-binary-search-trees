@@ -66,9 +66,11 @@ describe('Binary Search Tree', () => {
   describe('.remove(value)', () => {
     test('should remove the given value and replace the values appropriately', () => {
       expect(bsTree.find(10)).toBeTruthy();
+
       bsTree.remove(10);
+
       expect(bsTree.find(10)).toBeFalsy();
-      expect(bsTree.remove(10)).toEqual('No Node Found');
+      expect(bsTree.remove(10)).toEqual(null);
       expect(bsTree.value).toEqual(8);
       expect(bsTree.left.value < bsTree.value).toBeTruthy();
       expect(bsTree.left.left.value < bsTree.left.value).toBeTruthy();
@@ -76,24 +78,34 @@ describe('Binary Search Tree', () => {
       expect(bsTree.right.right.value > bsTree.right.value).toBeTruthy();
       expect(bsTree.find(19)).toBeTruthy();
       expect(bsTree.right.right).not.toBeNull();
+
       bsTree.remove(19);
+
       expect(bsTree.find(19)).toBeFalsy();
       expect(bsTree.right.right).toBeNull();
       expect(bsTree.find(5)).toBeTruthy();
+
       bsTree.remove(5);
+
       expect(bsTree.find(5)).toBeFalsy();
       expect(bsTree.left.value).toEqual(1);
       expect(bsTree.find(8)).toBeTruthy();
+
       bsTree.remove(8);
+
       expect(bsTree.find(8)).toBeFalsy();
       expect(bsTree.value).toEqual(1);
       expect(bsTree.right.value).toEqual(12);
       expect(bsTree.find(1)).toBeTruthy();
+
       bsTree.remove(1);
+
       expect(bsTree.find(1)).toBeFalsy();
       expect(bsTree.value).toEqual(12);
+
       bsTree.insert(10);
       expect(bsTree.left.value).toEqual(10);
+
       bsTree.remove(12);
       expect(bsTree.value).toEqual(10);
       bsTree.remove(10);
