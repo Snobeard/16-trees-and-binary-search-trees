@@ -2,7 +2,7 @@
 
 const BinarySearchTree = require('../lib/binay-search-tree');
 
-describe('K-Ary-Tree', () => {
+describe('Binary Search Tree', () => {
   let bsTree = new BinarySearchTree(10);
 
   bsTree.insert(5);
@@ -63,15 +63,41 @@ describe('K-Ary-Tree', () => {
     });
   });
 
-  // describe('.toString()', () => {
-  //   test('should combine all child nodes into a string using a breath-first and concatenate their values separated by a newline', () => {
-  //     expect(tree.toString()).toEqual('1\n2\n3\n4\n5\n6');
-  //     expect(two.toString()).toEqual('2\n4\n5\n6');
-  //     expect(three.toString()).toEqual('3');
-  //     expect(four.toString()).toEqual('4');
-  //     expect(six.toString()).toEqual('6');
-  //   });
-  // });
+  describe('.remove(value)', () => {
+    test.only('should remove the given value and \n-MOARLAZERS\n-MOARLAZERS\n-MOARLAZERS\n-MOARLAZERS', () => { // TODO - rename
+      let bsTreeTwo = new BinarySearchTree(10);
+      // bsTreeTwo.insert(15);
+      // bsTreeTwo.insert(16);
+      // bsTreeTwo.insert(17);
+      // bsTreeTwo.insert(18);
+      bsTreeTwo.insert(9);
+      bsTreeTwo.insert(7);
+
+      // expect(bsTreeTwo.right.value).toEqual(15);
+      // expect(bsTreeTwo.right.right.value).toEqual(16);
+      // expect(bsTreeTwo.right.right.right.value).toEqual(17);
+      // expect(bsTreeTwo.right.right.right.right.value).toEqual(18);
+      // expect(bsTreeTwo.left.value).toEqual(9);
+      // expect(bsTreeTwo.left.left.value).toEqual(7);
+
+      console.log('BEFORE',bsTreeTwo);
+      bsTreeTwo.remove(9);
+      console.log('AFTER',bsTreeTwo);
+      
+      expect(bsTreeTwo.value).toEqual(10);
+      
+      // console.log('BEFORE',bsTree);
+      // bsTree.remove(19);
+      // console.log('AFTER',bsTree);
+      // expect(bsTree.right.right).toBe(null);
+    });
+  });
+
+  //     10     //     8
+  //    /  \    //    / \
+  //   5   12   //   5  12
+  //  / \    \  //  /     \
+  // 1   8   19 // 1      19
 
   // describe('.toArray()', () => {
   //   test('should use a depth-first traversal and push all the tree\'s elements into an array', () => {
