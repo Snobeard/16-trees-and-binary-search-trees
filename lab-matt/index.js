@@ -20,8 +20,3 @@ three.appendChild(six);
 three.appendChild(seven);
 
 six.appendChild(eight);
-
-// one.breadthFirstSearch();
-
-// console.log(one.find(2));
-// console.log(one.find(20));

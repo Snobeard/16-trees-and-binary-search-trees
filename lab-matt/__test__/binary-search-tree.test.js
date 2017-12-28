@@ -45,67 +45,58 @@ describe('Binary Search Tree', () => {
 
   describe('.find(value)', () => {
     test('finds the first given value in the tree and return the node', () => {
-      expect(bsTree.find(10)).toEqual(true);
-      expect(bsTree.find(5)).toEqual(true);
-      expect(bsTree.find(8)).toEqual(true);
-      expect(bsTree.find(12)).toEqual(true);
-      expect(bsTree.find(1)).toEqual(true);
-      expect(bsTree.find(19)).toEqual(true);
+      expect(bsTree.find(10)).toBeTruthy();
+      expect(bsTree.find(5)).toBeTruthy();
+      expect(bsTree.find(8)).toBeTruthy();
+      expect(bsTree.find(12)).toBeTruthy();
+      expect(bsTree.find(1)).toBeTruthy();
+      expect(bsTree.find(19)).toBeTruthy();
     });
     
     test('if the value is not found it will return with "Value: \'<value>\' Not Found', () => {
-      expect(bsTree.find(0)).toEqual(false);
-      expect(bsTree.find(10)).toEqual(true);
-      expect(bsTree.find(20)).toEqual(false);
-      expect(bsTree.find(100)).toEqual(false);
-      expect(bsTree.find(200)).toEqual(false);
-      expect(bsTree.find(300)).toEqual(false);
+      expect(bsTree.find(10)).toBeTruthy();
+      expect(bsTree.find(0)).toBeFalsy();
+      expect(bsTree.find(20)).toBeFalsy();
+      expect(bsTree.find(100)).toBeFalsy();
+      expect(bsTree.find(200)).toBeFalsy();
+      expect(bsTree.find(300)).toBeFalsy();
     });
   });
 
   describe('.remove(value)', () => {
-    test.only('should remove the given value and \n-MOARLAZERS\n-MOARLAZERS\n-MOARLAZERS\n-MOARLAZERS', () => { // TODO - rename
-      let bsTreeTwo = new BinarySearchTree(10);
-      // bsTreeTwo.insert(15);
-      // bsTreeTwo.insert(16);
-      // bsTreeTwo.insert(17);
-      // bsTreeTwo.insert(18);
-      bsTreeTwo.insert(9);
-      bsTreeTwo.insert(7);
-
-      // expect(bsTreeTwo.right.value).toEqual(15);
-      // expect(bsTreeTwo.right.right.value).toEqual(16);
-      // expect(bsTreeTwo.right.right.right.value).toEqual(17);
-      // expect(bsTreeTwo.right.right.right.right.value).toEqual(18);
-      // expect(bsTreeTwo.left.value).toEqual(9);
-      // expect(bsTreeTwo.left.left.value).toEqual(7);
-
-      console.log('BEFORE',bsTreeTwo);
-      bsTreeTwo.remove(9);
-      console.log('AFTER',bsTreeTwo);
-      
-      expect(bsTreeTwo.value).toEqual(10);
-      
-      // console.log('BEFORE',bsTree);
-      // bsTree.remove(19);
-      // console.log('AFTER',bsTree);
-      // expect(bsTree.right.right).toBe(null);
+    test('should remove the given value and replace the values appropriately', () => {
+      expect(bsTree.find(10)).toBeTruthy();
+      bsTree.remove(10);
+      expect(bsTree.find(10)).toBeFalsy();
+      expect(bsTree.remove(10)).toEqual('No Node Found');
+      expect(bsTree.value).toEqual(8);
+      expect(bsTree.left.value < bsTree.value).toBeTruthy();
+      expect(bsTree.left.left.value < bsTree.left.value).toBeTruthy();
+      expect(bsTree.right.value > bsTree.value).toBeTruthy();
+      expect(bsTree.right.right.value > bsTree.right.value).toBeTruthy();
+      expect(bsTree.find(19)).toBeTruthy();
+      expect(bsTree.right.right).not.toBeNull();
+      bsTree.remove(19);
+      expect(bsTree.find(19)).toBeFalsy();
+      expect(bsTree.right.right).toBeNull();
+      expect(bsTree.find(5)).toBeTruthy();
+      bsTree.remove(5);
+      expect(bsTree.find(5)).toBeFalsy();
+      expect(bsTree.left.value).toEqual(1);
+      expect(bsTree.find(8)).toBeTruthy();
+      bsTree.remove(8);
+      expect(bsTree.find(8)).toBeFalsy();
+      expect(bsTree.value).toEqual(1);
+      expect(bsTree.right.value).toEqual(12);
+      expect(bsTree.find(1)).toBeTruthy();
+      bsTree.remove(1);
+      expect(bsTree.find(1)).toBeFalsy();
+      expect(bsTree.value).toEqual(12);
+      bsTree.insert(10);
+      expect(bsTree.left.value).toEqual(10);
+      bsTree.remove(12);
+      expect(bsTree.value).toEqual(10);
+      bsTree.remove(10);
     });
   });
-
-  //     10     //     8
-  //    /  \    //    / \
-  //   5   12   //   5  12
-  //  / \    \  //  /     \
-  // 1   8   19 // 1      19
-
-  // describe('.toArray()', () => {
-  //   test('should use a depth-first traversal and push all the tree\'s elements into an array', () => {
-  //     expect(tree.toArray()).toEqual([1,3,2,6,5,4]);
-  //     expect(two.toArray()).toEqual([2,6,5,4]);
-  //     expect(three.toArray()).toEqual([3]);
-  //     expect(four.toArray()).toEqual([4]);
-  //     expect(six.toArray()).toEqual([6]);
-  //   });
-  // });
 });
